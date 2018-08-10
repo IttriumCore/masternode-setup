@@ -1,8 +1,6 @@
 # MN-installer
 
-This script will install and configure your Ittrium masternode.  If you wish to install and setup your masternode manually, please refer to the Ittrium_Masternode_Setup_Guide_v1.1.pdf at;
-
-        https://github.com/IttriumCore/masternode-setup-guide/blob/master/Ittrium_Masternode_Setup_Guide_v1.1.pdf
+This script will install and configure your Ittrium masternode.  If you wish to install and setup your masternode manually, please refer to the Ittrium_Masternode_Setup_Guide_v1.2.pdf.
 
 # System requirements
 
