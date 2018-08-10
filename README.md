@@ -60,7 +60,7 @@ Restart and unlock your wallet.
 
 SSH (Putty on Windows, Terminal.app on macOS) to your VPS, login as root (Please note: It's normal that you don't see your password after typing or pasting it) and run the following commands:
 
-    wget 'https://raw.githubusercontent.com/IttriumCore/MN-installer/master/xit-mn-setup.sh'
+    wget 'https://raw.githubusercontent.com/IttriumCore/masternode-setup/master/xit-mn-setup.sh'
     
     chmod 755 xit-mn-setup.sh
     
