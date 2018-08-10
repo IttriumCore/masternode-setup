@@ -73,3 +73,12 @@ SSH (Putty on Windows, Terminal.app on macOS) to your VPS, login as root (Please
 Go to the Debug Console and enter the following command, remembering to use your masternode ID (i.e. MN01 in this example). 
 
     startmasternode alias false MN01
+
+
+# Tearing down a Masternode
+
+If you no longer wish to operate your Masternode, stop running MN01 on your VPS.
+
+    ./ittrium-cli stop
+
+Then from your controller wallet, edit your masternode.conf by deleting the MN01 masternode line entry.  Now restart the controller wallet and your 5,000 XIT collateral will now be unlocked.
