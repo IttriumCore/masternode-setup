@@ -23,7 +23,7 @@ USER=`ps u $(pgrep ittriumd) | grep ittriumd | cut -d " " -f 1`
 USERHOME=`eval echo "~$USER"`
 
 echo "Shutting down masternode..."
-if [ -e /etc/systemd/system/ittriumd.service ]; then
+if [ -e /etc/systemd/system/ittrium.service ]; then
   systemctl stop ittriumd
 else
   su -c "ittrium-cli stop" $USER
@@ -52,12 +52,12 @@ if ! grep -q "ulimit -s 256" /etc/default/fail2ban; then
 fi
 
 echo "Restarting Ittrium daemon..."
-if [ -e /etc/systemd/system/ittriumd.service ]; then
+if [ -e /etc/systemd/system/ittrium.service ]; then
   systemctl disable ittriumd
   rm /etc/systemd/system/ittriumd.service
 fi
 
-cat > /etc/systemd/system/ittriumd.service << EOL
+cat > /etc/systemd/system/ittrium.service << EOL
 [Unit]
 Description=Ittrium's distributed currency daemon
 After=network.target
