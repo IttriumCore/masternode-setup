@@ -14,7 +14,7 @@ COIN_DAEMON='ittriumd'
 COIN_CLI='ittrium-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO='https://github.com/IttriumCore/ittrium.git'
-COIN_TGZ='https://github.com/IttriumCore/ittrium/releases/download/v1.0.3.2/ittrium-v1.0.3.2-linux64.tar.gz'
+COIN_TGZ='https://github.com/IttriumCore/ittrium/releases/download/v1.0.3.3/ittrium-v1.0.3.3-linux64.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='ittrium'
 COIN_PORT=39993
@@ -26,14 +26,14 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 function showbanner() {
-echo "====================================================================================="
-echo "                       Ittrium Core Masternode Installer                             "
-echo "====================================================================================="
-echo "*************************************************************************************"
-echo "*   This script will install and configure your Ittrium masternode. It must be run  *"
-echo "*   as root, requires at least 1GB of RAM, 10GB of disk space and a Ubuntu 16.04 OS.*"
-echo "*   Only contiune if your VPS meets these requirements.                             *"
-echo "*************************************************************************************"
+echo "=============================================================================="
+echo "                       Ittrium Core Masternode Installer                      "
+echo "=============================================================================="
+echo "******************************************************************************"
+echo "* This script will install and configure your Ittrium masternode. It must be *"
+echo "* runas root, requires at least 1GB of RAM, 10GB of disk space and a Ubuntu  *"
+echo "* 16.04 OS. Only contiune if your VPS meets these requirements.              *"
+echo "******************************************************************************"
 }
 
 function get_confirmation() {
