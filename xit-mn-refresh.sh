@@ -21,7 +21,7 @@ fi
 USER=`ps u $(pgrep ittriumd) | grep ittriumd | cut -d " " -f 1`
 USERHOME=`eval echo "~$USER"`
 
-if [ -e /etc/systemd/system/ittriumd.service ]; then
+if [ -e /etc/systemd/system/ittrium.service ]; then
   systemctl stop ittriumd
 else
   su -c "ittrium-cli stop" $USER
@@ -42,7 +42,7 @@ sed -i '/^addnode/d' $USERHOME/.ittrium/ittrium.conf
 echo "Installing bootstrap file..."
 wget $BOOTSTRAPURL && xz -cd $BOOTSTRAPARCHIVE > $USERHOME/.ittrium/bootstrap.dat && rm $BOOTSTRAPARCHIVE
 
-if [ -e /etc/systemd/system/ittriumd.service ]; then
+if [ -e /etc/systemd/system/ittrium.service ]; then
   sudo systemctl start ittriumd
 else
   su -c "ittriumd -daemon" $USER
