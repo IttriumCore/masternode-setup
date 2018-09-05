@@ -89,7 +89,7 @@ If your masternode is stuck on a block or behaving badly, you can refresh it.
 Please note that this script must be run as root.
 
 ```
-bash <( curl https://raw.githubusercontent.com/bulwark-crypto/Bulwark-MN-Install/master/refresh_node.sh )
+bash <( curl https://raw.githubusercontent.com/IttriumCore/masternode-setup/master/xit-mn-refresh.sh )
 ```
 
 No other attention is required.
@@ -100,5 +100,5 @@ To update your node please run this command and follow the instructions.
 Please note that this script must be run as root.
 
 ```
-bash <( curl https://raw.githubusercontent.com/bulwark-crypto/Bulwark-MN-Install/master/update_node.sh )
+bash <( curl https://raw.githubusercontent.com/IttriumCore/masternode-setup/master/xit-mn-update.sh )
 ```
