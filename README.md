@@ -1,6 +1,6 @@
 # Masternode setup guide and script. 
 
-This script will install and configure your Ittrium masternode.  If you wish to install and setup your masternode manually, please refer to the Ittrium_Masternode_Setup_Guide_v1.2.pdf.
+This script will install and configure your Ittrium masternode.  If you wish to install and setup your masternode manually, please refer to the Ittrium Masternode Setup Guide pdf.
 
 # System requirements
 
@@ -83,22 +83,3 @@ If you no longer wish to operate your Masternode, stop running MN01 on your VPS.
 
 Then from your controller wallet, edit your masternode.conf by deleting the MN01 masternode line entry.  Now restart the controller wallet and your 5,000 XIT collateral will now be unlocked.
 
-## Refreshing Node
-
-If your masternode is stuck on a block or behaving badly, you can refresh it.
-Please note that this script must be run as root.
-
-```
-bash <( curl https://raw.githubusercontent.com/IttriumCore/masternode-setup/master/xit-mn-refresh.sh )
-```
-
-No other attention is required.
-
-## Updating Node
-
-To update your node please run this command and follow the instructions.
-Please note that this script must be run as root.
-
-```
-bash <( curl https://raw.githubusercontent.com/IttriumCore/masternode-setup/master/xit-mn-update.sh )
-```
