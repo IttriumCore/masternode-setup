@@ -14,7 +14,7 @@ COIN_DAEMON='ittriumd'
 COIN_CLI='ittrium-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO='https://github.com/IttriumCore/ittrium.git'
-COIN_TGZ='https://github.com/IttriumCore/ittrium/releases/download/v1.0.3.3/ittrium-v1.0.3.3-linux64.tar.gz'
+COIN_TGZ='https://github.com/IttriumCore/ittrium/releases/download/v1.1.0/ittrium-v1.1.0-linux64.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='ittrium'
 COIN_PORT=39993
@@ -37,7 +37,7 @@ echo "**************************************************************************
 }
 
 function get_confirmation() {
- echo -e "Please type ${RED}YES${NC} to confirm your VPS meets the requirements, or type anything else to exit."
+ echo -e "Please type ${RED}yes${NC} to confirm your VPS meets the requirements, otherwise type ${RED}no${NC} to exit."
  read -e CONFIRM
 }
 
@@ -76,7 +76,7 @@ function download_node() {
 
 function ask_permission() {
  echo -e "${RED}Do you trust the ittrium devs and want to use $COIN_NAME binaries compiled on his server? ${NC}."
- echo -e "Please type ${RED}YES${NC} if you want to use precompiled binaries, or type anything else to compile them on your server"
+ echo -e "Please type ${RED}yes${NC} if you want to use precompiled binaries, or type anything else to compile them on your server"
  read -e ASKPER
 }
 
@@ -301,11 +301,11 @@ clear
 
 showbanner
 get_confirmation
-if [[ "$CONFIRM" == "YES" ]]; then
+if [[ "$CONFIRM" == "yes" ]]; then
     checks
     prepare_system
     ask_permission
-        if [[ "$ASKPER" == "YES" ]]; then
+        if [[ "$ASKPER" == "yes" ]]; then
         download_node
          else
         create_swap
