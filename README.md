@@ -87,4 +87,4 @@ Then from your controller wallet, edit your masternode.conf by deleting the MN01
 
 To update your node please run this command and follow the instructions. Please note that this script must be run as root.
 
-        bash <( curl https://raw.githubusercontent.com/IttriumCore/masternode-setup/master/xit_update.sh )
+        bash <( curl https://raw.githubusercontent.com/IttriumCore/masternode-setup/master/xit-mn-update.sh )
