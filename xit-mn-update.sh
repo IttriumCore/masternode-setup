@@ -27,7 +27,7 @@ wget "$TARBALLURL"
 
 echo "Shutting down masternode..."
 if [ -e /etc/systemd/system/ittrium.service ]; then
-  systemctl stop ittriumd
+  systemctl stop ittrium.service
 else
   su -c "ittrium-cli stop" "$USER"
 fi
@@ -52,7 +52,7 @@ fi
 
 echo "Restarting Ittrium daemon..."
 if [ -e /etc/systemd/system/ittrium.service ]; then
-  systemctl disable ittriumd
+  systemctl disable ittrium.service
   rm /etc/systemd/system/ittrium.service
 fi
 
@@ -74,14 +74,14 @@ StartLimitBurst=3
 [Install]
 WantedBy=multi-user.target
 EOL
-sudo systemctl enable ittriumd
-sudo systemctl start ittriumd
+sudo systemctl enable ittrium.service
+sudo systemctl start ittrium.service
 
 sleep 10
 
 clear
 
-if ! systemctl status ittriumd | grep -q "active (running)"; then
+if ! systemctl status ittrium.service | grep -q "active (running)"; then
   echo "ERROR: Failed to start ittriumd. Please contact support."
   exit
 fi
