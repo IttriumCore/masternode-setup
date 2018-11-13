@@ -5,9 +5,9 @@ apt-get -qq update
 apt -qqy install curl
 clear
 
-TARBALLURL=$(curl -s https://api.github.com/repos/IttriumCore/ittrium/releases/latest | grep browser_download_url | grep -e "ittrium.*linux64" | cut -d '"' -f 4)
-TARBALLNAME=$(curl -s https://api.github.com/repos/IttriumCore/ittrium/releases/latest | grep browser_download_url | grep -e "ittrium.*linux64" | cut -d '"' -f 4 | cut -d "/" -f 9)
-XITVERSION=$(curl -s https://api.github.com/repos/IttriumCore/ittrium/releases/latest | grep browser_download_url | grep -e "ittrium.*linux64" | cut -d '"' -f 4 | cut -d "/" -f 8)
+TARBALLURL='https://github.com/IttriumCore/ittrium/releases/download/v2.0.1/ittrium-v2.0.1-linux64.tar.gz'
+TARBALLNAME='ittrium-v2.0.1-linux64.tar.gz'
+XITVERSION='v2.0.1'
 
 clear
 echo "This script will update your masternode to version $XITVERSION"
@@ -33,13 +33,14 @@ else
 fi
 
 echo "Installing Ittrium $XITVERSION..."
-rm /usr/local/bin/ittriumd /usr/local/bin/ittrium-cli
+rm /usr/local/bin/ittriumd /usr/local/bin/ittrium-cli /usr/local/bin/ittrium-tx /usr/local/bin/ittrium-qt
 tar -xzvf "$TARBALLNAME" -C /usr/local/bin
 rm "$TARBALLNAME"
 
 if [ -e /usr/bin/ittriumd ];then rm -rf /usr/bin/ittriumd; fi
 if [ -e /usr/bin/ittrium-cli ];then rm -rf /usr/bin/ittrium-cli; fi
 if [ -e /usr/bin/ittrium-tx ];then rm -rf /usr/bin/ittrium-tx; fi
+if [ -e /usr/bin/ittrium-qt ];then rm -rf /usr/bin/ittrium-qt; fi
 
 # Remove addnodes from ittrium.conf
 sed -i '/^addnode/d' "$USERHOME/.ittrium/ittrium.conf"
