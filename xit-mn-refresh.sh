@@ -5,8 +5,8 @@ apt-get -qq update
 apt -qqy install curl
 clear
 
-BOOTSTRAPURL=$(curl -s https://api.github.com/repos/IttriumCore/ittrium/releases/latest | grep bootstrap.dat.xz | grep browser_download_url | cut -d '"' -f 4)
-BOOTSTRAPARCHIVE="bootstrap.dat.xz"
+BOOTSTRAPURL='https://github.com/IttriumCore/ittrium/releases/download/v2.0.1/bootstrap.dat.xz' 
+BOOTSTRAPARCHIVE='bootstrap.dat.xz'
 
 clear
 echo "This script will refresh your masternode."
@@ -22,7 +22,7 @@ USER=$(ps -o user= -p "$(pgrep ittriumd)")
 USERHOME=$(eval echo "~$USER")
 
 if [ -e /etc/systemd/system/ittrium.service ]; then
-  systemctl stop ittriumd
+  systemctl stop ittrium.service
 else
   su -c "ittrium-cli stop" "$USER"
 fi
@@ -80,9 +80,11 @@ done
 clear
 
 cat << EOL
+
 Now, you need to start your masternode. If you haven't already, please add this
 node to your masternode.conf now, restart and unlock your desktop wallet, go to
 the Masternodes tab, select your new node and click "Start Alias."
+
 EOL
 
 read -rp "Press Enter to continue after you've done that. " -n1 -s
