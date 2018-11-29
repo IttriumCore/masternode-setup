@@ -1,63 +1,63 @@
 #!/bin/bash
 
-# Make sure curl is installed
-apt-get -qq update
-apt -qqy install curl
-clear
-
-#TARBALLURL='https://github.com/IttriumCore/ittrium/releases/download/v2.0.1/ittrium-v2.0.1-linux64.tar.gz'
 TARBALLURL='https://github.com/IttriumCore/ittrium/releases/download/untagged-8f6b9e1321cbc31580e1/ittrium-v2.0.2-linux64.tar.gz'
 TARBALLNAME='ittrium-v2.0.2-linux64.tar.gz'
 XITVERSION='v2.0.2'
+USER=$(ps -o user= -p "$(pgrep ittriumd)")
+USERHOME=$(eval echo "~$USER")
 
-clear
+function showbanner() {
 echo "This script will update your masternode to version $XITVERSION"
 read -rp "Press Ctrl-C to abort or any other key to continue. " -n1 -s
 clear
+}
 
+function permission() {
 if [ "$(id -u)" != "0" ]; then
   echo "This script must be run as root."
   exit 1
 fi
+}
 
-USER=$(ps -o user= -p "$(pgrep ittriumd)")
-USERHOME=$(eval echo "~$USER")
-
+function download() {
 echo "Downloading new version..."
 wget "$TARBALLURL"
+}
 
+function close() {
 echo "Shutting down masternode..."
 if [ -e /etc/systemd/system/ittrium.service ]; then
   systemctl stop ittrium.service
 else
   su -c "ittrium-cli stop" "$USER"
 fi
+}
 
+function update() {
 echo "Installing Ittrium $XITVERSION..."
 rm /usr/local/bin/ittriumd /usr/local/bin/ittrium-cli /usr/local/bin/ittrium-tx /usr/local/bin/ittrium-qt
 tar -xzvf "$TARBALLNAME" -C /usr/local/bin
 rm "$TARBALLNAME"
-
 if [ -e /usr/bin/ittriumd ];then rm -rf /usr/bin/ittriumd; fi
 if [ -e /usr/bin/ittrium-cli ];then rm -rf /usr/bin/ittrium-cli; fi
 if [ -e /usr/bin/ittrium-tx ];then rm -rf /usr/bin/ittrium-tx; fi
 if [ -e /usr/bin/ittrium-qt ];then rm -rf /usr/bin/ittrium-qt; fi
-
-# Remove addnodes from ittrium.conf
-sed -i '/^addnode/d' "$USERHOME/.ittrium/ittrium.conf"
-
 # Add Fail2Ban memory hack if needed
 if ! grep -q "ulimit -s 256" /etc/default/fail2ban; then
   echo "ulimit -s 256" | sudo tee -a /etc/default/fail2ban
   systemctl restart fail2ban
 fi
+}
 
+function restart() {
 echo "Restarting Ittrium daemon..."
 if [ -e /etc/systemd/system/ittrium.service ]; then
   systemctl disable ittrium.service
   rm /etc/systemd/system/ittrium.service
 fi
+}
 
+function check() {
 cat > /etc/systemd/system/ittrium.service << EOL
 [Unit]
 Description=Ittriums's distributed currency daemon
@@ -87,13 +87,23 @@ if ! systemctl status ittrium.service | grep -q "active (running)"; then
   echo "ERROR: Failed to start ittriumd. Please contact support."
   exit
 fi
+}
+
+
+##### Main #####
+clear
+
+showbanner
+permission
+download
+close
+update
+restart
+check
 
 echo "Waiting for wallet to load..."
 until su -c "ittrium-cli getinfo 2>/dev/null | grep -q \"version\"" "$USER"; do
   sleep 1;
-done
-
-clear
 
 echo "Your masternode is syncing. Please wait for this process to finish."
 echo "This can take up to a few hours. Do not close this window."
