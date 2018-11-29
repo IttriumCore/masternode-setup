@@ -5,7 +5,8 @@ apt-get -qq update
 apt -qqy install curl
 clear
 
-TARBALLURL='https://github.com/IttriumCore/ittrium/releases/download/v2.0.1/ittrium-v2.0.1-linux64.tar.gz'
+#TARBALLURL='https://github.com/IttriumCore/ittrium/releases/download/v2.0.1/ittrium-v2.0.1-linux64.tar.gz'
+TARBALLURL='https://github.com/IttriumCore/ittrium/releases/download/untagged-8f6b9e1321cbc31580e1/ittrium-v2.0.2-linux64.tar.gz''
 TARBALLNAME='ittrium-v2.0.1-linux64.tar.gz'
 XITVERSION='v2.0.1'
 
