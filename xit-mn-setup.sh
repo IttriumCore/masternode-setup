@@ -1,6 +1,4 @@
 #!/bin/bash
-# Version		:v1.01
-# Date			:2018-11-07
 # Function		:Installs MN dependencies, Ittrium Core and configures the ittrium.conf file.
 # Platforms		:Linux Ubuntu 16.04 ONLY on a Vultr, Hetzner or DigitalOcean VPS.
 # Instructions	:Run this script as root user with the following commands.
@@ -14,7 +12,7 @@ COIN_DAEMON='ittriumd'
 COIN_CLI='ittrium-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO='https://github.com/IttriumCore/ittrium.git'
-COIN_TGZ='https://github.com/IttriumCore/ittrium/releases/download/v2.0.1/ittrium-v2.0.1-linux64.tar.gz'
+COIN_TGZ='https://github.com/IttriumCore/ittrium/releases/download/v2.0.3/ittrium-v2.0.3-linux64.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='ittrium'
 COIN_PORT=39993
@@ -27,7 +25,7 @@ NC='\033[0m'
 
 function showbanner() {
 echo "=============================================================================="
-echo "                    Ittrium Core Masternode Installer v2.0.1                  "
+echo "                    Ittrium Core Masternode Installer v2.0.3                  "
 echo "=============================================================================="
 echo "******************************************************************************"
 echo "* This script will install and configure your Ittrium masternode. It must be *"
