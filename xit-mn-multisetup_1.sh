@@ -128,7 +128,7 @@ else
 	mv ittrium.conf ittrium0.conf
 	touch ittrium.conf
 	declare -i rpcp
-	rpcp=39994+$nnodes
+	rpcp=50369+$nnodes
         echo "rpcallowip=127.0.0.1" >> ittrium.conf
 	echo "bind=127.0.0.$nnodes" >> ittrium.conf
         username=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w32 | head -n1)
