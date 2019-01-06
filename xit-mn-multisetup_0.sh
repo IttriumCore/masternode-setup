@@ -16,8 +16,8 @@ echo "${Green}I've finished upgrading! Now I need to install dependencies"
 	sudo apt-get install nano unzip git -y
 
 echo "${Green}I've finished installing dependencies! Now I'll make folders and download the wallet."
-	wget https://github.com/IttriumCore/ittrium/releases/download/v2.0.3/ittrium-v2.0.3-linux64.tar.gz
-	tar -xzvf ittrium-v2.0.3-linux64.tar.gz
+	wget https://github.com/IttriumCore/ittrium/releases/download/v2.1.0/ittrium-v2.1.0-linux64.tar.gz
+	tar -xzvf ittrium-v2.1.0-linux64.tar.gz
 	chmod +x ittriumd
 	chmod +x ittrium-cli
 	
